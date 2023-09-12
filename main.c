@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:45:12 by pnamnil           #+#    #+#             */
-/*   Updated: 2023/09/10 17:00:24 by pnamnil          ###   ########.fr       */
+/*   Updated: 2023/09/11 17:16:24 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,23 @@ int    test(int test_nb, int (*fn)(const char *, ...))
 		
 		// bonus part
 		case 12:
-			return fn("%-20d", i_max);
+			{
+				int cnt = 0;
+				for (int i = 15; i < 20; i++)
+				cnt += fn("%-*s\n", i, s);
+				return (cnt);
+			}
+		case 13:
+			{
+				int cnt = 0;
+				for (int i = 15; i < 20; i++)
+				cnt += fn("%*s\n", i, s);
+				return (cnt);
+			}
+		case 14:
+			return fn("%-20s\t%20s\t%.20s", s, s, s);
+		case 15:
+			return fn("%-20d\t%20d\t%.20d", i_max, i_max,  i_max);
 		default:
 			break;
 	}
@@ -73,19 +89,19 @@ int    test(int test_nb, int (*fn)(const char *, ...))
 
 int main(void)
 {
-	for (int i = 12; i <= 12; i++)
+	for (int i = 14; i <= 15; i++)
 	{
 		// int lib = test(i, printf);
 		// int	lft = test(i, ft_printf);
 		int lib;
 		int lft;
-		printf (" => test %d: return: %d\n", i, lib = test(i, printf));
-		printf (" => test %d: return: %d\n", i, lft = test(i, ft_printf));
-		// if (lib != lft)
-		// {
-		// 	printf ("Wrong! in case: %d, lib: %d, lft: %d\n", i, lib, lft);
-		// 	return (-1);
-		// }
+		printf (" => lib test %d: return: %d\n", i, lib = test(i, printf));
+		printf (" => lft test %d: return: %d\n", i, lft = test(i, ft_printf));
+		if (lib != lft)
+		{
+			printf ("Wrong! in case: %d, lib: %d, lft: %d\n", i, lib, lft);
+			return (-1);
+		}
 	}
 	return (0);
 }
