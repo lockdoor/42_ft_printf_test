@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:45:12 by pnamnil           #+#    #+#             */
-/*   Updated: 2023/09/11 17:16:24 by pnamnil          ###   ########.fr       */
+/*   Updated: 2023/09/12 09:38:30 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ int    test(int test_nb, int (*fn)(const char *, ...))
 	int		i_max = INT_MAX;
 	int		i_min = INT_MIN;
 	int		i_zro = 0;
+	int		nb = 42;
 
 	switch (test_nb)
 	{
 		case 1:
-			return fn("Test worked");
+			return fn("Test worked \001\002\007\v\010\f\r\n");
 		case 2:
 			return fn("Test worked%%");
 		case 3:
@@ -80,7 +81,8 @@ int    test(int test_nb, int (*fn)(const char *, ...))
 		case 14:
 			return fn("%-20s\t%20s\t%.20s", s, s, s);
 		case 15:
-			return fn("%-20d\t%20d\t%.20d", i_max, i_max,  i_max);
+			return fn("%-6d\t%6d\t%06d\t%.06d\t%06.3d\t%.-6d\t%.0-6d",
+			nb, nb, nb, nb, nb, nb, nb);
 		default:
 			break;
 	}
@@ -89,7 +91,7 @@ int    test(int test_nb, int (*fn)(const char *, ...))
 
 int main(void)
 {
-	for (int i = 14; i <= 15; i++)
+	for (int i = 1; i <= 1; i++)
 	{
 		// int lib = test(i, printf);
 		// int	lft = test(i, ft_printf);

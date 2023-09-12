@@ -6,7 +6,7 @@
 #    By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 10:31:40 by pnamnil           #+#    #+#              #
-#    Updated: 2023/09/10 14:07:04 by pnamnil          ###   ########.fr        #
+#    Updated: 2023/09/12 09:27:25 by pnamnil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,12 @@ $(NAME): lib_make $(OBJS)
 
 lib_make:
 	$(MAKE) -C $(LIBFTPRINTF_PATH)
+
+l:
+	leaks --atExit -- ./$(NAME)
+
+v:
+	valgrind ./$(NAME)
 
 clean:
 	rm -rf bin
