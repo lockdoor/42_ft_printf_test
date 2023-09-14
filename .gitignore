@@ -1,2 +1,4 @@
 bin
 prog
+prog.dSYM
+a.out

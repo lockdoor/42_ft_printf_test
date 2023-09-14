@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:45:12 by pnamnil           #+#    #+#             */
-/*   Updated: 2023/09/12 09:38:30 by pnamnil          ###   ########.fr       */
+/*   Updated: 2023/09/14 15:50:47 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int    test(int test_nb, int (*fn)(const char *, ...))
 	switch (test_nb)
 	{
 		case 1:
-			return fn("Test worked \001\002\007\v\010\f\r\n");
+			return fn("\x01\x02\a\v\b\f\r\n");
 		case 2:
 			return fn("Test worked%%");
 		case 3:
@@ -79,7 +79,7 @@ int    test(int test_nb, int (*fn)(const char *, ...))
 				return (cnt);
 			}
 		case 14:
-			return fn("%-20s\t%20s\t%.20s", s, s, s);
+			return fn("%s, %-5s, %5s, %5.2s, %-5.2s, %10.2s, %-10.2s", s, s, s, s, s, null, null);
 		case 15:
 			return fn("%-6d\t%6d\t%06d\t%.06d\t%06.3d\t%.-6d\t%.0-6d",
 			nb, nb, nb, nb, nb, nb, nb);
@@ -91,7 +91,7 @@ int    test(int test_nb, int (*fn)(const char *, ...))
 
 int main(void)
 {
-	for (int i = 1; i <= 1; i++)
+	for (int i = 14; i <= 14; i++)
 	{
 		// int lib = test(i, printf);
 		// int	lft = test(i, ft_printf);
